@@ -1,4 +1,13 @@
 import { createClient } from "@supabase/supabase-js";
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_PROJECT_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = createClient('https://ppssovvdrfpbuotsruuw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwc3NvdnZkcmZwYnVvdHNydXV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NTg1MzAsImV4cCI6MjA1MjQzNDUzMH0.yRcmNGTIeE0wrgmcKr97HGHVaY8QIH8_ARcCv6qNIUU')
+if (!supabaseUrl) {
+    throw new Error("supabaseUrl is required.");
+}
+if (!supabaseKey) {
+    throw new Error("supabaseKey is required.");
+}
+
+export const supabase = createClient(supabaseUrl, supabaseKey);

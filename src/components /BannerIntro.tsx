@@ -1,10 +1,10 @@
-import Banner from "../assets/png/Banner.png"
+import banner from "../assets/png/Banner.png"
 
 const Banner = () => {
     return (
         <div className="relativ w-full h-[362px]">
             <img 
-            src={Banner} 
+            src={banner} 
             alt="Banner"
             className="w-full h-full object-cover" />
         </div>

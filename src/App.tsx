@@ -1,6 +1,6 @@
 import Banner from "./components /BannerIntro";
 import Navbar from "./components /Navbar";
-import Hero from "./components /hero";
+import Hero from "./components /Hero";
 
 const App = () => {
   return (

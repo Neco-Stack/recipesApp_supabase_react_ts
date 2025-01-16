@@ -26,7 +26,7 @@ export const fetchAllRecipes = async (): Promise<Recipe[]> => {
     .neq('name', 'Heisse Schokolade');
 
   if (error) {
-    console.error('Fehler beim Abrufen der Rezepte:', error);
+    console.error('Fehler  beim Abrufen der Rezepte:', error);
     return [];
   }
   

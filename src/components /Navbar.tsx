@@ -23,7 +23,6 @@ const Navbar = () => {
                     <li>
                         <a href="#home" className="text-[#2c2b2b] text-[26px] font-inter font-bold hover:underline">Login</a>
                     </li>
-
                 </ul>
             </nav>
         </header>

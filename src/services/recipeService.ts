@@ -16,3 +16,19 @@ export const fetchPopularRecipes = async (): Promise<Recipe[]> => {
   
   return data || [];
 };
+
+export const fetchAllRecipes = async (): Promise<Recipe[]> => {
+  const { data, error } = await supabase
+    .from('recipes')
+    .select('id, name, description, image_url, category_id, created_at, instructions, servings')
+    .neq('name', 'Waffeln') 
+    .neq('name', 'Pancakes')
+    .neq('name', 'Heisse Schokolade');
+
+  if (error) {
+    console.error('Fehler beim Abrufen der Rezepte:', error);
+    return [];
+  }
+  
+  return data || [];
+};

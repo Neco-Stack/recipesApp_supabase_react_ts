@@ -1,15 +1,22 @@
-import Banner from "./components /BannerIntro";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components /Navbar";
-import Hero from "./components /Hero";
+import Footer from "./components /Footer";
+import Home from "./pages/Home";
+import Recipes from "./pages/Recipes";
 
 const App = () => {
   return (
-    <div className="App">
-      <Navbar />
-      <Banner />
-      <Hero />
-    </div>
-    );
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipes" element={<Recipes />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
- 
+
 export default App;

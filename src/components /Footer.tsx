@@ -15,6 +15,7 @@ const Footer = () => {
                 alt="Social Media Icons"/>
             </div>
 
+
         </footer>
       );
 }

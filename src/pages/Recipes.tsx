@@ -31,8 +31,7 @@ const Recipes = () => {
                         <div className="flex flex-col justify-between p-4 w-[784px] h-full bg-[#f5f2f2] rounded-tr-[33px] rounded-br-[33px]">
                             <h3 className="font-inter font-bold text-[#2c2b2b] text-[40px] leading-tight mt-5">{recipe.name}</h3>
                             <p className="font-inter font-light text-[#2c2b2b] text-[20px]">{recipe.description}</p>
-                            <button className="w-[188px] h-[43px] bg-[#ffdb63] text-[#2c2b2b] font-inter font-bold rounded-[32px] py-[9px] px-[33px]" style={{ padding: '9px 33px' }}>
-                                Zum Rezept
+                            <button className="w-[188px] h-[43px] bg-[#ffdb63] text-[#2c2b2b] font-inter font-bold rounded-[32px] py-[9px] px-[33px]" style={{ padding: '9px 33px' }}>Zum Rezept
                             </button>
                         </div>
                     </div>

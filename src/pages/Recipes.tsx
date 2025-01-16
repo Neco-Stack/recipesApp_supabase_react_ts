@@ -3,7 +3,6 @@ import Banner from "../components /BannerIntro";
 import { fetchAllRecipes} from "../services/recipeService";
 import { Recipe } from "../services/recipeService";
 import Hero from "../components /Hero";
-import Footer from "../components /Footer";
 
 const Recipes = () => {
     const [allRecipes, setAllRecipes] = useState<Recipe[]>([]);
@@ -39,7 +38,6 @@ const Recipes = () => {
                     </div>
                 ))}
             </div>
-            <Footer />
         </>
     );
 }

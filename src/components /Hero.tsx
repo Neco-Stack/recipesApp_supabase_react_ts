@@ -26,6 +26,7 @@ const Hero = () => {
                     <div className="p-4 bg-[#f5f2f2] flex-grow">
                     <h3 className="text-[32px] font-inter font-bold text-[#2c2b2b]">{recipe.name}</h3>
                     <p>{recipe.description}</p>
+                    
                     <button className="mt-4 w-[188px] h-[43px] bg-[#ffdb63] text-[#2c2b2b] font-inter font-bold rounded-[32px]">Zum Rezept</button>
                     </div>
                     </div>

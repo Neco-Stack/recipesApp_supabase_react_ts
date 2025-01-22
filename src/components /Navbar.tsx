@@ -31,12 +31,16 @@ const Navbar = () => {
         navigate('/');
     };
 
+    const handleLogoClick = () => {
+        navigate('/'); 
+    };
+
     return (
         <header className="w-full h-[143px] mx-auto">
             <div className="h-[30px] bg-[#ffdb63]"></div>
             <nav className="h-[113px] bg-white flex items-center justify-between px-8 shadow-md">
-                <div className="flex items-center ml-[237px]">
-                    <img src={headerLogo} alt="Logo" className='h-[26px] w-[28px] mr-2' />
+                <div className="flex items-center ml-[237px]" onClick={handleLogoClick}>
+                    <img src={headerLogo} alt="Logo" className='h-[26px] w-[28px] mr-2' onClick={handleLogoClick} />
                     <h2 className="font-inter font-medium text-[26px] text-[#2c2b2b] flex items-center">Die Rezeptwelt</h2>
                 </div>
                 <ul className='flex space-x-8'>

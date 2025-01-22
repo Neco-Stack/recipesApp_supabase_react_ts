@@ -32,3 +32,32 @@ export const fetchAllRecipes = async (): Promise<Recipe[]> => {
   
   return data || [];
 };
+
+export const addFavoriteRecipe = async (userId: string, recipeId: string) => {
+  const { data, error } = await supabase
+  .from('recipes_favorites')
+  .insert([{ user_id: userId, recipe_id: recipeId}]);
+
+  if (error) throw error;
+  return data;
+}
+
+export const removeFavoriteRecipe = async (userId: string, recipeId: string) => {
+  const { data, error } = await supabase
+    .from('recipe_favorites')
+    .delete()
+    .match({ user_id: userId, recipe_id: recipeId });
+
+    if (error) throw error;
+    return data;
+};
+
+export const fetchFavoriteRecipes = async (userId: string) => {
+  const { data, error } = await supabase
+    .from('recipe_favorites')
+    .select('recipe_id')
+    .eq('user_id', userId);
+
+  if (error) throw error;
+  return data;
+};

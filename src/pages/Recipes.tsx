@@ -7,6 +7,7 @@ import Banner from "../components /BannerIntro";
 import Hero from "../components /Hero";
 import { User } from "@supabase/supabase-js";
 
+
 const Recipes = () => {
     const [allRecipes, setAllRecipes] = useState<Recipe[]>([]);
     const [user, setUser] = useState<User | null>(null);  // 

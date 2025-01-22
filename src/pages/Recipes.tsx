@@ -1,20 +1,53 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../utils/setupSupabase"; 
+import { fetchAllRecipes } from "../services/recipeService"; 
+import { Recipe } from "../services/recipeService"; 
 import Banner from "../components /BannerIntro";
-import { fetchAllRecipes} from "../services/recipeService";
-import { Recipe } from "../services/recipeService";
 import Hero from "../components /Hero";
+import { User } from "@supabase/supabase-js";
 
 const Recipes = () => {
     const [allRecipes, setAllRecipes] = useState<Recipe[]>([]);
+    const [user, setUser] = useState<User | null>(null);  // 
+    const [sessionChecked, setSessionChecked] = useState(false);  
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const loadRecipes = async () => {
-            const all = await fetchAllRecipes();
-            setAllRecipes(all);
+        const getSession = async () => {
+            const { data, error } = await supabase.auth.getSession();
+            if (error) {
+                console.log("Error fetching session:", error.message);
+                setUser(null);  
+            } else {
+                setUser(data?.session?.user || null);  
+            }
+            setSessionChecked(true); 
         };
 
-        loadRecipes();
-    }, []);
+        getSession();
+    }, []);  
+
+    useEffect(() => {
+        if (sessionChecked && !user) {
+            navigate("/login");  
+        }
+    }, [sessionChecked, user, navigate]);  
+
+    useEffect(() => {
+        if (user) {
+            const loadRecipes = async () => {
+                const all = await fetchAllRecipes();
+                setAllRecipes(all);
+            };
+
+            loadRecipes();
+        }
+    }, [user]);  
+
+    if (!sessionChecked) return null;  
+
+    if (!user) return null; 
 
     return (
         <>

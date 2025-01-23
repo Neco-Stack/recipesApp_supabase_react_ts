@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../utils/setupSupabase"; 
-import { fetchAllRecipes } from "../services/recipeService"; 
+import { fetchAllRecipes, removeFavoriteRecipe } from "../services/recipeService"; 
 import { Recipe } from "../services/recipeService"; 
 import Banner from "../components /BannerIntro";
 import Hero from "../components /Hero";
 import { User } from "@supabase/supabase-js";
+import { FaStar } from "react-icons/fa";
 
 
 const Recipes = () => {
     const [allRecipes, setAllRecipes] = useState<Recipe[]>([]);
-    const [user, setUser] = useState<User | null>(null);  // 
+    const [user, setUser] = useState<User | null>(null); 
+    const [favoriteRecipes, setFavoriteRecipes] = useState<string[]>([]);
     const [sessionChecked, setSessionChecked] = useState(false);  
     const navigate = useNavigate();
 
@@ -46,6 +48,22 @@ const Recipes = () => {
         }
     }, [user]);  
 
+    
+
+    const handleToggleFavorite = async (recipeId: string) => {
+        if (!user) return;
+
+        try {
+            if (favoriteRecipes.includes(recipeId)) {
+                await removeFavoriteRecipe(user.id, recipeId);
+                setFavoriteRecipes([...favoriteRecipes]);
+            }
+        } catch (error) {
+            console.error("Fehler beim Aktualisieren der Favoriten", error);
+
+        }
+        };
+
     if (!sessionChecked) return null;  
 
     if (!user) return null; 
@@ -64,6 +82,12 @@ const Recipes = () => {
                             className="w-[403px] h-[322px] object-cover rounded-tl-[33px] rounded-bl-[33px]" />
                         <div className="flex flex-col justify-between p-4 w-[784px] h-full bg-[#f5f2f2] rounded-tr-[33px] rounded-br-[33px]">
                             <h3 className="font-inter font-bold text-[#2c2b2b] text-[40px] leading-tight mt-5">{recipe.name}</h3>
+                                <FaStar
+                                    onClick={() => handleToggleFavorite(recipe.id)}
+                                    className={`cursor-pointer text-3xl transition-colors duration-300 ${
+                                        favoriteRecipes.includes(recipe.id) ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-300'
+                                    }`}
+                                    /> 
                             <p className="font-inter font-light text-[#2c2b2b] text-[20px]">{recipe.description}</p>
                             <button className="w-[188px] h-[43px] bg-[#ffdb63] text-[#2c2b2b] font-inter font-bold rounded-[32px] py-[9px] px-[33px]" style={{ padding: '9px 33px' }}>Zum Rezept
                             </button>

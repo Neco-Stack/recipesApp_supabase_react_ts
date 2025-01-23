@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import LogIn from "./components /LogIn";
 import SignUp from "./components /SignUp";
+import Profile from "./pages/Profile";
 
 
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </div>

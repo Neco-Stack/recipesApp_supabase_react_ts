@@ -52,12 +52,24 @@ export const removeFavoriteRecipe = async (userId: string, recipeId: string) => 
     return data;
 };
 
-export const fetchFavoriteRecipes = async (userId: string) => {
+
+export const fetchFavoriteRecipes = async (userId: string): Promise<Recipe[]> => {
   const { data, error } = await supabase
     .from('recipe_favorites')
     .select('recipe_id')
     .eq('user_id', userId);
 
   if (error) throw error;
-  return data;
+
+  const favoriteRecipeIds = data?.map(favorite => favorite.recipe_id);
+
+  if (favoriteRecipeIds && favoriteRecipeIds.length > 0) {
+    const { data: recipes, error: recipeError } = await supabase
+    .from('recipes')
+    .select('id, name, description, image_url, category_id, created_at, instructions, servings')
+
+    if (recipeError) throw recipeError;
+    return recipes || [];
+  }
+  return [];
 };

@@ -57,6 +57,11 @@ const Navbar = () => {
                     </li>
                     {user ? (
                         <>
+                                <li>
+                                <Link to="/profile" className="text-[#2c2b2b] text-[26px] font-inter font-bold hover:underline">
+                                    Profil
+                                </Link>
+                            </li>
                             <li>
                                 <span className="text-[#2c2b2b] text-[26px] font-inter font-bold">
                                     Hallo, {user?.user_metadata?.first_name}

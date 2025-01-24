@@ -6,7 +6,7 @@ const Banner = () => {
           <img
             src={bannerImg}
             alt="Banner"
-            className="w-full h-full object-cover opacity-90"
+            className="w-full h-full object-cover"
           />
           
           <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center text-center">

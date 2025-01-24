@@ -39,8 +39,7 @@ const Profile = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Mein Profil</h1>
-            <h2 className="text-xl font-semibold mb-2">Meine Favoriten</h2>
+            <h2 className="text-xl font-inter font-semibold mb-2">Meine Favoriten</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {favoriteRecipes.map((recipe) => (
                     <div key={recipe.id} className="border p-4 rounded-lg relative">

@@ -45,32 +45,32 @@ const Navbar = () => {
                 </div>
                 <ul className='flex space-x-8'>
                     <li>
-                        <Link to="/" className="text-[#2c2b2b] text-[26px] font-inter font-bold hover:underline">Home</Link>
+                        <Link to="/" className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline">Home</Link>
                     </li>
                     <li>
-                        <Link to="/recipes" className={`text-[#2c2b2b] text-[26px] font-inter font-bold hover:underline ${!user ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                        <Link to="/recipes" className={`text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline ${!user ? 'opacity-50 cursor-not-allowed' : ''}`}>
                             Rezepte
                         </Link>
                     </li>
                     <li>
-                        <a href="#home" className="text-[#2c2b2b] text-[26px] font-inter font-bold hover:underline">Über uns</a>
+                        <a href="#home" className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline">Über uns</a>
                     </li>
                     {user ? (
                         <>
                                 <li>
-                                <Link to="/profile" className="text-[#2c2b2b] text-[26px] font-inter font-bold hover:underline">
+                                <Link to="/profile" className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline">
                                     Profil
                                 </Link>
                             </li>
                             <li>
-                                <span className="text-[#2c2b2b] text-[26px] font-inter font-bold">
+                                <span className="text-[#2c2b2b] text-[26px] font-inter font-semibold">
                                     Hallo, {user?.user_metadata?.first_name}
                                 </span>
                             </li>
                             <li>
                                 <button
                                     onClick={handleLogout}
-                                    className="text-[#ffdb63] text-[26px] font-inter font-bold hover:underline"
+                                    className="text-[#ffdb63] text-[26px] font-inter font-semibold hover:underline ml-10"
                                 >
                                     Logout
                                 </button>

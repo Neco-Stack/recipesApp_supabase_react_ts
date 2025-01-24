@@ -35,7 +35,7 @@ export const fetchAllRecipes = async (): Promise<Recipe[]> => {
 
 export const addFavoriteRecipe = async (userId: string, recipeId: string) => {
   const { data, error } = await supabase
-  .from('recipes_favorites')
+  .from('recipe_favorites')
   .insert([{ user_id: userId, recipe_id: recipeId}]);
 
   if (error) throw error;
@@ -67,6 +67,7 @@ export const fetchFavoriteRecipes = async (userId: string): Promise<Recipe[]> =>
     const { data: recipes, error: recipeError } = await supabase
     .from('recipes')
     .select('id, name, description, image_url, category_id, created_at, instructions, servings')
+    .in('id', favoriteRecipeIds)
 
     if (recipeError) throw recipeError;
     return recipes || [];

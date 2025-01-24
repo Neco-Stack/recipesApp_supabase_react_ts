@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../utils/setupSupabase"; 
-import { fetchAllRecipes, removeFavoriteRecipe } from "../services/recipeService"; 
+import { fetchAllRecipes, removeFavoriteRecipe, addFavoriteRecipe, fetchFavoriteRecipes } from "../services/recipeService"; 
 import { Recipe } from "../services/recipeService"; 
 import Banner from "../components /BannerIntro";
 import Hero from "../components /Hero";
@@ -42,11 +42,13 @@ const Recipes = () => {
             const loadRecipes = async () => {
                 const all = await fetchAllRecipes();
                 setAllRecipes(all);
+                const favorites = await fetchFavoriteRecipes(user.id);
+                setFavoriteRecipes(favorites.map(recipe => recipe.id))
             };
 
             loadRecipes();
         }
-    }, [user]);  
+    }, [user]);
 
     
 
@@ -56,7 +58,10 @@ const Recipes = () => {
         try {
             if (favoriteRecipes.includes(recipeId)) {
                 await removeFavoriteRecipe(user.id, recipeId);
-                setFavoriteRecipes([...favoriteRecipes]);
+                setFavoriteRecipes(favoriteRecipes.filter(id => id !== recipeId));
+            } else {
+                await addFavoriteRecipe(user.id, recipeId);
+                setFavoriteRecipes([...favoriteRecipes, recipeId]);
             }
         } catch (error) {
             console.error("Fehler beim Aktualisieren der Favoriten", error);

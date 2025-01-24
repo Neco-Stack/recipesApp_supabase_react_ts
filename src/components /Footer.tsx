@@ -3,7 +3,7 @@ import socialIcons from '../assets/png/Icons.png'
 
 const Footer = () => {
     return (
-        <footer className='h-[273px] bg-[#ffdb63] flex items-center justify-between px-[114px]'>
+        <footer className='h-[273px] bg-[#ffdb63] flex items-center justify-between px-[114px] mt-10'>
             <div className='flex items-center'>
                 <img src={logo} alt="Logo" className='h-[46px] w-[50px] mr-4' />
                 <h2 className='font-inter font-semibold text-[46px] text-center'>Die Rezeptwelt</h2>

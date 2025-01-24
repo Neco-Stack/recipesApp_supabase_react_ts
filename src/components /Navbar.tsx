@@ -58,10 +58,9 @@ const Navbar = () => {
                 </li>
                 {user ? (
                     <>
-                        {/* Profil-Icon */}
                         <li className="flex items-center">
                             <Link to="/profile" className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline flex items-center">
-                                <FaUser size={24} className="mr-2" /> {/* Profil-Icon mit passendem Abstand */}
+                                <FaUser size={24} className="mr-2" /> 
                                 Profil
                             </Link>
                         </li>

@@ -54,8 +54,11 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li>
-                    <a href="#home" className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline">Über uns</a>
+                    <Link to="/about-us" className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline">
+                    Über uns
+                    </Link>
                 </li>
+                
                 {user ? (
                     <>
                         <li className="flex items-center">

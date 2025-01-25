@@ -65,7 +65,6 @@ const Recipes = () => {
             }
         } catch (error) {
             console.error("Fehler beim Aktualisieren der Favoriten", error);
-
         }
         };
 

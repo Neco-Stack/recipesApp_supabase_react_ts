@@ -8,6 +8,7 @@ import SignUp from "./components /SignUp";
 import Profile from "./pages/Profile";
 import PasswordForgotten from "./components /PasswordForgotten";
 import AboutUs from "./pages/About";
+import RecipeDetails from "./pages/RecipeDetails";
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />

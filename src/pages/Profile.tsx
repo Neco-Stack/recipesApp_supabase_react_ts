@@ -3,6 +3,7 @@ import { supabase } from '../utils/setupSupabase';
 import { fetchFavoriteRecipes, Recipe, removeFavoriteRecipe } from '../services/recipeService'; 
 import { User } from "@supabase/supabase-js";
 import { FaTrash } from "react-icons/fa";  
+import { Link } from "react-router-dom";
 
 const Profile = () => {
     const [user, setUser] = useState<User | null>(null);
@@ -43,9 +44,11 @@ const Profile = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {favoriteRecipes.map((recipe) => (
                     <div key={recipe.id} className="border p-4 rounded-lg relative">
-                        <img src={recipe.image_url} alt={recipe.name} className="w-full h-48 object-cover mb-2 rounded" />
-                        <h3 className="font-bold">{recipe.name}</h3>
-                        <p className="text-sm">{recipe.description}</p>
+                        <Link to={`/recipes/${recipe.id}`} className="block">
+                            <img src={recipe.image_url} alt={recipe.name} className="w-full h-48 object-cover mb-2 rounded" />
+                            <h3 className="font-bold">{recipe.name}</h3>
+                            <p className="text-sm">{recipe.description}</p>
+                        </Link>
                         <button 
                             onClick={() => removeFavorite(recipe.id)} 
                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition-colors duration-200"

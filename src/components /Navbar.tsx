@@ -3,7 +3,9 @@ import { supabase } from "../utils/setupSupabase";
 import { Link, useNavigate } from "react-router-dom";
 import headerLogo from "../assets/png/Icon.png";
 import { User } from '@supabase/supabase-js';
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaShoppingCart } from "react-icons/fa";
+import { FaStore } from "react-icons/fa";
+
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -36,6 +38,14 @@ const Navbar = () => {
         navigate('/'); 
     };
 
+    const goToCart = () => {
+        navigate('/products');  
+      };
+
+    const goToStore = () => {
+        navigate('/products')
+    };
+
     return (
         <header className="w-full h-[143px] mx-auto">
             <div className="h-[30px] bg-[#ffdb63]"></div>
@@ -58,6 +68,17 @@ const Navbar = () => {
                         Über uns
                         </Link>
                     </li>
+
+                    {user && (
+            <li className="flex items-center">
+              <button
+                onClick={goToStore}
+                className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline"
+              >
+                <FaStore size={24} />  
+              </button>
+            </li>
+          )}
                     
                     {user ? (
                         <>
@@ -90,6 +111,14 @@ const Navbar = () => {
                             </li>
                         </>
                     )}
+                    <li>
+            <button
+              onClick={goToCart}  
+              className="text-[#2c2b2b] text-[26px] font-inter font-semibold hover:underline"
+            >
+              <FaShoppingCart size={24} /> 
+            </button>
+          </li>
                 </ul>
             </nav>
         </header>

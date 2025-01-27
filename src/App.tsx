@@ -9,7 +9,7 @@ import Profile from "./pages/Profile";
 import PasswordForgotten from "./components /PasswordForgotten";
 import AboutUs from "./pages/About";
 import RecipeDetail from "./components /RecipeDetail";
-
+import ProductList from "./components /ProductList";
 
 const App = () => {
   return (
@@ -18,6 +18,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductList />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:recipeId" element={<RecipeDetail />} />
           <Route path="/login" element={<LogIn />} />

@@ -27,7 +27,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Funktion zum Abrufen der Warenkorbanzahl
   const fetchCartItemCount = useCallback(async () => {
     if (user) {
       const { count, error } = await supabase

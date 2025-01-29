@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { supabase } from '../utils/setupSupabase';
 import { Link, useNavigate } from "react-router-dom";
 import headerLogo from "../assets/png/Icon.png";

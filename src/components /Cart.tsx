@@ -39,7 +39,14 @@ const Cart: React.FC = () => {
       if (error) {
         console.error('Error fetching cart items:', error);
       } else {
-        setCartItems(data || []);
+        const typedData = data?.map((item) => ({
+          id: item.id,
+          product_id: item.product_id,
+          quantity: item.quantity,
+          products: Array.isArray(item.products) ? item.products[0] : item.products, 
+        })) as CartItem[];
+  
+        setCartItems(typedData);
       }
     }
   };
